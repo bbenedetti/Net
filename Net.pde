@@ -3,7 +3,7 @@ int nDots = 20;
 PVector[] dots;
 
 void setup () {
-  size(600, 600);
+  size(1000, 1000);
 
   dots = new PVector[nDots]; 
   for (int i = 0; i < nDots; i++) {
@@ -49,10 +49,14 @@ void renderDots() {
     fill(127, 100);
     ellipse(dots[i].x, dots[i].y, 33, 33);
   }
-  
+
+  stroke(0);
   for (int i = 0; i < nDots; i++) {
     for (int j = i + 1; j < nDots; j++) {
-      line(dots[i].x, dots[i].y, dots[j].x, dots[j].y);
+      float d = dist(dots[i].x, dots[i].y, dots[j].x, dots[j].y);
+      if (d <= 100) {
+        line(dots[i].x, dots[i].y, dots[j].x, dots[j].y);
+      }
     }
   }
 }
